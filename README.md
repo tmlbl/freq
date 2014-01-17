@@ -1,7 +1,7 @@
 Freq
 ================================
 
-*View the [live demo](http://http://corporationenterprises.com/freq/).*
+*View the [live demo](http://corporationenterprises.com/freq/).*
 
 Freq is a browser-based implementation of a binaural beat generator utilizing the latest webkit audio features.
 
