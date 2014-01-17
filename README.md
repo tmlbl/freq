@@ -13,12 +13,15 @@ What are Binaural Beats?
 From www.monroeinstitute.org:
 
 <pre>
-The sensation of auditory binaural beats occurs when two coherent sounds of nearly similar frequencies are presented one to each ear with stereo headphones or speakers.
+The sensation of auditory binaural beats occurs when two coherent sounds 
+of nearly similar frequencies are presented one to each ear with stereo 
+headphones or speakers.
 
-The brain integrates the two signals, producing a sensation of a third sound called the binaural beat.
+The brain integrates the two signals, producing a sensation of a third 
+sound called the binaural beat.
 
-For example, if a frequency of 100 Hz is played in one ear and 107 Hz is played in the other ear, a binaural
-beat of 7 Hz is created by the brain.
+For example, if a frequency of 100 Hz is played in one ear and 107 Hz is 
+played in the other ear, a binaural beat of 7 Hz is created by the brain.
 
 Brain waves match or “follow” the binaural beat. If
 the binaural beat is 7 Hz, an increase in brain waves of 7
