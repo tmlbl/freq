@@ -90,7 +90,7 @@ $(document).ready(function () {
 	// If this is a preset, load the preset
 	var preset = {};
 	var qString = window.location.search.substring(1);
-	if(qString) {
+	if (qString) {
 		loadPreset(qString);
 	}
 
@@ -147,7 +147,10 @@ $(document).ready(function () {
 	/* CLEAN THIS UP - do not want values changing when implemented. at least not visibly... */
 	// Try parseDouble or try not parsing..
 	$('#leftearhz').change(function () {
-		if(!$.isNumeric($('#leftearhz').val())) { $('#leftearhz').val((parseFloat($('#leftfreq').val())).toFixed(2)); return false; };
+		if (!$.isNumeric($('#leftearhz').val())) {
+			$('#leftearhz').val((parseFloat($('#leftfreq').val())).toFixed(2));
+			return false;
+		};
 		var freq = parseFloat($('#leftearhz').val());
 		$('#leftfreq').simpleSlider("setValue", (freq.toFixed(2)));
 		play1($('#leftfreq').val());
@@ -155,13 +158,18 @@ $(document).ready(function () {
 		$('#leftearhz').val(freq);
 	});
 	$('#rightearhz').change(function () {
-		if(!$.isNumeric($('#rightearhz').val())) { $('#rightearhz').val((parseFloat($('#rightfreq').val())).toFixed(2)); return false; };
+		if (!$.isNumeric($('#rightearhz').val())) {
+			$('#rightearhz').val((parseFloat($('#rightfreq').val())).toFixed(2));
+			return false;
+		};
 		$('#rightfreq').simpleSlider("setValue", $('#rightearhz').val());
 		play2($('#rightfreq').val());
 		$('#bahz').val(parseFloat(Math.abs($('#leftfreq').val() - $('#rightfreq').val())).toFixed(2));
 	});
 	$('#bahz').change(function () {
-		if(!$.isNumeric($('#bahz').val())) { $('#bahz').val(parseFloat(Math.abs($('#leftfreq').val() - $('#rightfreq').val())).toFixed(2)); };
+		if (!$.isNumeric($('#bahz').val())) {
+			$('#bahz').val(parseFloat(Math.abs($('#leftfreq').val() - $('#rightfreq').val())).toFixed(2));
+		};
 		var newR = (parseFloat($('#leftearhz').val()) + parseFloat($('#bahz').val()));
 		$('#rightfreq').simpleSlider("setValue", (newR));
 		play2(newR);
@@ -208,14 +216,13 @@ $(document).ready(function () {
 	function parseFreq (f) {
 		if (f == 0) {
 			return '00000';
-		}
-		else if (parseFloat(f) < 100) {
+		} else if (parseFloat(f) < 100) {
 			return '0' + (((parseFloat(f)).toString().replace('.','')).substring(0, 4));
-		}
-		else if (f.length < 6) {
+		} else if (f.length < 6) {
 			return f.replace('.','') + '0';
+		} else {
+			return (f.replace('.','')).substring(0, 5);
 		}
-		else return (f.replace('.','')).substring(0, 5);
 	}
 
 	function parseVol (v) {
@@ -233,28 +240,24 @@ $(document).ready(function () {
 	setTimeout(function () { appStart = false; }, 20000);
 
 	function freqRange(f) {
-		if(f == 0 && appStart) {
-			return 'Welcome to Freq. Move the sliders, enter values in the Hz meters, or select a preset to get started.';
-		}
-		else if (f == 0) {
-			return 'All donations will go toward my tuition for web development bootcamp.';
-		}
-		else if (f >= 0 && f <= 4) {
+		if (f == 0 && appStart) {
+			return 'Welcome to Freq. Move the sliders, enter values in the Hz meters,' +
+				' or select a preset to get started.';
+		} else if (f >= 0 && f <= 4) {
 			return 'Delta Range: Deep, dreamless sleep, trance, suspended animation.';
-		}
-		else if (f > 4 && f <= 8) {
-			return 'Theta Range: Creativity, intuition, imagery, oneness, knowing. Relates to subconscious.';
-		}
-		else if (f > 8 && f <= 13) {
-			return 'Alpha Range: Light relaxation, accelerated learning, positive thinking. Conducive to creative problem solving.';
-		}
-		else if (f > 13 && f <= 38) {
-			return 'Beta Range: Normal wakefulness, the taking in of stimuli received through the senses.';
-		}
-		else if (f > 38 && f <= 60) {
-			return 'Gamma Range: Associated with information-rich task processing & high-level information processing';
-		}
-		else if(f > 60) {
+		} else if (f > 4 && f <= 8) {
+			return 'Theta Range: Creativity, intuition, imagery, oneness, knowing. ' +
+				'Relates to subconscious.';
+		} else if (f > 8 && f <= 13) {
+			return 'Alpha Range: Light relaxation, accelerated learning, positive thinking.' +
+				' Conducive to creative problem solving.';
+		} else if (f > 13 && f <= 38) {
+			return 'Beta Range: Normal wakefulness, the taking in of stimuli received ' +
+				'through the senses.';
+		} else if (f > 38 && f <= 60) {
+			return 'Gamma Range: Associated with information-rich task processing & ' +
+				'high-level information processing';
+		} else if(f > 60) {
 			return 'Try a preset for an example of a binaural beat.';
 		}
 	}
@@ -263,7 +266,7 @@ $(document).ready(function () {
 	setInterval(function () {
 		var bahz = parseFloat($('#bahz').val());
 		var desc = freqRange(bahz);
-		if(desc != $('#freqDesc').text()) {
+		if (desc != $('#freqDesc').text()) {
 			$('#freqDesc').fadeOut(1400, function() { $('#freqDesc').html(desc) });
 			$('#freqDesc').fadeIn(1400);
 		}
