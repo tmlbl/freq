@@ -1,5 +1,5 @@
 
-/* TODO: 
+/* TODO:
 	- Check for Chrome and redirect
 	- Save user presets in local storage
 	- Get UI to work for diff size screens
@@ -17,7 +17,7 @@ $(document).ready(function () {
 	// Set up osc1
 	var osc1 = context1.createOscillator();
 	var panner1 = context1.createPanner();
-	var osc1vol = context1.createGainNode();
+	var osc1vol = context1.createGain();
 	panner1.connect(osc1vol);
 	osc1vol.connect(context1.destination);
 	panner1.setPosition(3, 0, 0);
@@ -26,7 +26,7 @@ $(document).ready(function () {
 	// Set up osc 2
 	var osc2 = context1.createOscillator();
 	var panner2 = context1.createPanner();
-	var osc2vol = context1.createGainNode();
+	var osc2vol = context1.createGain();
 	panner2.connect(osc2vol);
 	osc2vol.connect(context1.destination);
 	panner2.setPosition(-3, 0, 0);
@@ -34,9 +34,9 @@ $(document).ready(function () {
 
 	// Load the ambience
 	var rb = new Audio();
-	rb.src = 'http://corporationenterprises.com/freq/sounds/rainbirds.wav';
+	rb.src = 'sounds/rainbirds.wav';
 	var rbsrc = context1.createMediaElementSource(rb);
-	var rbvol = context1.createGainNode();
+	var rbvol = context1.createGain();
 	rbvol.gain.value = $('#rbvol').val();
 	rbsrc.connect(rbvol);
 	rbvol.connect(context1.destination);
@@ -44,9 +44,9 @@ $(document).ready(function () {
 	rb.play();
 
 	var crik = new Audio();
-	crik.src = 'http://corporationenterprises.com/freq/sounds/crickets.wav';
+	crik.src = 'sounds/crickets.wav';
 	var criksrc = context1.createMediaElementSource(crik);
-	var crikvol = context1.createGainNode();
+	var crikvol = context1.createGain();
 	crikvol.gain.value = $('#crikvol').val();
 	criksrc.connect(crikvol);
 	crikvol.connect(context1.destination);
@@ -54,9 +54,9 @@ $(document).ready(function () {
 	crik.play();
 
 	var fire = new Audio();
-	fire.src = 'http://corporationenterprises.com/freq/sounds/fire.wav';
+	fire.src = 'sounds/fire.wav';
 	var firesrc = context1.createMediaElementSource(fire);
-	var firevol = context1.createGainNode();
+	var firevol = context1.createGain();
 	firevol.gain.value = $('#firevol').val();
 	firesrc.connect(firevol);
 	firevol.connect(context1.destination);
@@ -64,9 +64,9 @@ $(document).ready(function () {
 	fire.play();
 
 	var water = new Audio();
-	water.src = 'http://corporationenterprises.com/freq/sounds/water.wav';
+	water.src = 'sounds/water.wav';
 	var watersrc = context1.createMediaElementSource(water);
-	var watervol = context1.createGainNode();
+	var watervol = context1.createGain();
 	watervol.gain.value = $('#watervol').val();
 	watersrc.connect(watervol);
 	watervol.connect(context1.destination);
@@ -79,7 +79,7 @@ $(document).ready(function () {
 		osc1.frequency.value = freq;
 		osc1.connect(panner1);
 		osc1.noteOn(0);
-	}	
+	}
 	var play2 = function (freq) {
 		osc2.type = 'sine';
 		osc2.frequency.value = freq;
@@ -202,16 +202,16 @@ $(document).ready(function () {
 	// Close the getURL window when button is pressed
 	$('#closeUrl').click(function() {
 		$('#getUrl').fadeOut(1000);
-		$('#overlay').fadeOut(700);	
+		$('#overlay').fadeOut(700);
 	});
 
 	function parseFreq (f) {
 		if (f == 0) {
 			return '00000';
-		} 
+		}
 		else if (parseFloat(f) < 100) {
 			return '0' + (((parseFloat(f)).toString().replace('.','')).substring(0, 4));
-		} 
+		}
 		else if (f.length < 6) {
 			return f.replace('.','') + '0';
 		}
