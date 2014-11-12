@@ -35,7 +35,7 @@ Ambience.prototype.play = function() {
   this.audio.play();
 };
 
-// Listen to change in slider value
+// Listens to change in slider value
 Ambience.prototype.listen = function() {
   var self = this;
   var id = '#' + this.opts.id;
