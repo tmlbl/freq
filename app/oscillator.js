@@ -4,6 +4,7 @@
 function Oscillator(opts) {
   this.opts = opts;
   this.wire();
+  this.render();
   //this.play();
 }
 
