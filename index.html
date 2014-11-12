@@ -3,7 +3,6 @@
 <head>
 	<link href="http://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet" type="text/css">
 	<title>Document</title>
-	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<link rel="stylesheet" href="app/ba.css">
 	<link rel="stylesheet" href="bower_components/jquery-simple-slider/css/simple-slider.css">
 	<link rel="stylesheet" href="bower_components/jquery-simple-slider/css/simple-slider-volume.css">
@@ -26,7 +25,6 @@
 				<li class="slider"><label for="osc1">Ambience 1</label><input id="rbvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
 				<li class="slider"><label for="osc1">Ambience 2</label><input id="crikvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
 				<li class="slider"><label for="osc1">Ambience 3</label><input id="firevol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="slider"><label for="osc1">Ambience 4</label><input id="watervol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
 				<li class="savebtn"><button id="getURL" class="btn btn-default">Get URL</button></li>
 			</ul>
 		</div>
@@ -79,6 +77,21 @@
 				  </ul>
 			</div>
 		</div>
+
+	<!-- Template for the ambient sound controls -->
+	<script id="ambience-template" type="text/x-handlebars-template">
+		<li class="slider">
+			<label for="{{id}}">{{src}}</label>
+			<input id="{{id}}" type="range" class="slide" data-slider="true"
+				data-slider-theme="volume" data-slider-range="0,0.99"
+				step="0.01" value="0.2">
+		</li>
+	</script>
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/handlebars/handlebars.min.js"></script>
+	<script src="app/context.js"></script>
+	<script src="app/sound.js"></script>
 	<script src="app/ba.js"></script>
 	<script src="bower_components/jquery-simple-slider/js/simple-slider.min.js"></script>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">

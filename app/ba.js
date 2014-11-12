@@ -12,7 +12,7 @@
 $(document).ready(function () {
 
 	// Set up audio context
-	var context1 = new webkitAudioContext();
+	var context1 = document.context;
 
 	// Set up osc1
 	var osc1 = context1.createOscillator();
@@ -65,15 +65,18 @@ $(document).ready(function () {
 	fire.loop = true;
 	fire.play();
 
-	var water = new Audio();
-	water.src = 'sounds/water.wav';
-	var watersrc = context1.createMediaElementSource(water);
-	var watervol = context1.createGain();
-	watervol.gain.value = $('#watervol').val();
-	watersrc.connect(watervol);
-	watervol.connect(context1.destination);
-	water.loop = true;
-	water.play();
+	var water = new Ambience({
+		src: 'sounds/water.wav',
+		id: 'water'
+	});
+	// water.src = 'sounds/water.wav';
+	// var watersrc = context1.createMediaElementSource(water);
+	// var watervol = context1.createGain();
+	// watervol.gain.value = $('#watervol').val();
+	// watersrc.connect(watervol);
+	// watervol.connect(context1.destination);
+	// water.loop = true;
+	// water.play();
 
 	// Functions to update the oscillators
 	var play1 = function (freq) {
