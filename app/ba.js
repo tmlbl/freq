@@ -22,6 +22,7 @@ $(document).ready(function () {
 	osc1vol.connect(context1.destination);
 	panner1.setPosition(3, 0, 0);
 	osc1.disconnect();
+	osc1.noteOn(0);
 
 	// Set up osc 2
 	var osc2 = context1.createOscillator();
@@ -31,6 +32,7 @@ $(document).ready(function () {
 	osc2vol.connect(context1.destination);
 	panner2.setPosition(-3, 0, 0);
 	osc2.disconnect();
+	osc2.noteOn(0);
 
 	// Load the ambience
 	var rb = new Audio();
@@ -80,11 +82,18 @@ $(document).ready(function () {
 		osc1.connect(panner1);
 		osc1.noteOn(0);
 	}
+
+	function mod1 (freq) {
+		osc1.type = 'sine';
+		osc1.frequency.value = freq;
+		osc1.connect(panner1);
+	}
+
 	var play2 = function (freq) {
 		osc2.type = 'sine';
 		osc2.frequency.value = freq;
 		osc2.connect(panner2);
-		osc2.noteOn(0);
+		//osc2.noteOn(0);
 	}
 
 	// If this is a preset, load the preset
@@ -96,14 +105,16 @@ $(document).ready(function () {
 
 	// For all loading of presets
 	function loadPreset (q) {
-		var p1 = parseFloat(q.substring(0, 3) + '.' + q.substring(3, 5));
+		var p1 = parseFloat(q.substring(0, 3) + '.' +
+			q.substring(3, 5));
 		play1(p1);
 		$('#leftfreq').val(p1);
 		$('#leftearhz').val(p1);
 		var p2 = parseFloat('0.' + q.substring(5, 7));
 		osc1vol.gain.value = p2;
 		$('#leftvol').val(p2);
-		var p3 = parseFloat(q.substring(7, 10) + '.' + q.substring(10, 12));
+		var p3 = parseFloat(q.substring(7, 10) + '.' +
+			q.substring(10, 12));
 		play2(p3);
 		$('#rightfreq').val(p3);
 		$('#rightearhz').val(p3);
@@ -133,7 +144,7 @@ $(document).ready(function () {
 	$('#leftfreq').change(function () {
 		var freq = parseFloat($('#leftfreq').val());
 		$('#leftearhz').val(freq.toFixed(2));
-		play1($('#leftfreq').val());
+		mod1($('#leftfreq').val());
 		$('#bahz').val(parseFloat(Math.abs($('#leftfreq').val() - $('#rightfreq').val())).toFixed(2));
 	});
 	$('#rightfreq').change(function () {
@@ -228,11 +239,11 @@ $(document).ready(function () {
 	function parseVol (v) {
 		if (v == 0) {
 			return '00';
-		}
-		else if (v.length < 4) {
+		} else if (v.length < 4) {
 			return (v.replace('.','')).substring(1) + '0';
+		} else {
+			return (v.replace('.','')).substring(1);
 		}
-		else return (v.replace('.','')).substring(1);
 	}
 
 	// Descriptions of frequency ranges
