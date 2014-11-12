@@ -81,7 +81,21 @@
 			<label for="{{id}}">{{src}}</label>
 			<input id="{{id}}" type="range" class="slide" data-slider="true"
 				data-slider-theme="volume" data-slider-range="0,0.99"
-				step="0.01" value="0.99">
+				step="0.01" value="0.99" />
+		</li>
+	</script>
+
+	<!-- Template for the oscillator controls -->
+	<script id="osc-template" type="text/x-handlebars-template">
+		<li class="slider">
+			<label for="osc1">Left Ear Frequency</label>
+			<input type="text" class="slide" data-slider="true" data-slider-theme="volume"
+				id="leftfreq" data-slider-range="0,999" data-slider-step="0.01" value="0" />
+		</li>
+		<li class="slider">
+			<label for="osc1">Left Ear Volume</label>
+			<input id="leftvol" type="range" class="slide" data-slider="true"
+				data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2" />
 		</li>
 	</script>
 
