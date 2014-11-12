@@ -34,6 +34,10 @@ $(document).ready(function () {
 	osc2.disconnect();
 	osc2.noteOn(0);
 
+	var osc3 = new Oscillator({
+		position: -3
+	});
+
 	// Load the ambience
 	var rb = new Audio();
 	rb.src = 'sounds/rainbirds.wav';
@@ -69,14 +73,6 @@ $(document).ready(function () {
 		src: 'sounds/water.wav',
 		id: 'water'
 	});
-	// water.src = 'sounds/water.wav';
-	// var watersrc = context1.createMediaElementSource(water);
-	// var watervol = context1.createGain();
-	// watervol.gain.value = $('#watervol').val();
-	// watersrc.connect(watervol);
-	// watervol.connect(context1.destination);
-	// water.loop = true;
-	// water.play();
 
 	// Functions to update the oscillators
 	var play1 = function (freq) {
