@@ -8,6 +8,7 @@ function Oscillator(opts) {
   //this.play();
 }
 
+// Create and connect audio components
 Oscillator.prototype.wire = function() {
   this.osc = document.context.createOscillator();
   this.osc.type = 'sine';
@@ -19,11 +20,13 @@ Oscillator.prototype.wire = function() {
   this.vol.connect(document.context.destination);
 };
 
+// Turn on the oscillator
 Oscillator.prototype.play = function() {
   this.osc.frequency.value = 200;
   this.osc.noteOn(0);
 };
 
+// Create HTML elements
 Oscillator.prototype.render = function() {
   var src = $('#osc-template').html();
   this.slider = Handlebars.compile(src);

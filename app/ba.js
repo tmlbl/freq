@@ -35,7 +35,8 @@ $(document).ready(function () {
 	osc2.noteOn(0);
 
 	var osc3 = new Oscillator({
-		position: -3
+		position: -3,
+		title: 'Left Ear'
 	});
 
 	// Load the ambience
