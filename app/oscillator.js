@@ -48,3 +48,12 @@ Oscillator.prototype.listen = function() {
     self.osc.frequency.value = self.freqSlider.val();
   });
 };
+
+/**
+ * Sets the oscillator frequency
+ * @param {Number} val Frequency in Hz
+ */
+Oscillator.prototype.set = function(val) {
+  this.osc.frequency.value = val;
+  this.freqSlider.val(val);
+};
