@@ -5,7 +5,8 @@ function Oscillator(opts) {
   this.opts = opts;
   this.wire();
   this.render();
-  //this.play();
+  this.play();
+  this.listen();
 }
 
 // Create and connect audio components
@@ -29,6 +30,21 @@ Oscillator.prototype.play = function() {
 // Create HTML elements
 Oscillator.prototype.render = function() {
   var src = $('#osc-template').html();
-  this.slider = Handlebars.compile(src);
-  $('#sliderlist').append(this.slider(this.opts));
+  this.component = Handlebars.compile(src);
+  $('#sliderlist').append(this.component(this.opts));
+};
+
+// Listen to the slider change events
+Oscillator.prototype.listen = function() {
+  var self = this;
+  // Listen to the volume slider
+  this.volSlider = $('#' + this.opts.id + 'vol');
+  this.volSlider.change(function () {
+    self.vol.gain.value = self.volSlider.val();
+  });
+  // Listen to the frequency slider
+  this.freqSlider = $('#' + this.opts.id + 'freq');
+  this.freqSlider.change(function () {
+    self.osc.frequency.value = self.freqSlider.val();
+  });
 };

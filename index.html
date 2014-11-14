@@ -16,16 +16,7 @@
 
 		<div id="window">
 			<ul id="sliderlist">
-				<li class="slider">
-					<label for="osc1">Left Ear Frequency</label><input type="text" class="slide" data-slider="true" data-slider-theme="volume" id="leftfreq" data-slider-range="0,999" data-slider-step="0.01" value="0" />
-				</li>
-				<li class="slider"><label for="osc1">Left Ear Volume</label><input id="leftvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="slider"><label for="osc1">Right Ear Frequency</label><input type="text" class="slide" data-slider="true" data-slider-theme="volume" id="rightfreq" data-slider-range="0,999" data-slider-step="0.01" value="0" /></li>
-				<li class="slider"><label for="osc1">Right Ear Volume</label><input id="rightvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="slider"><label for="osc1">Ambience 1</label><input id="rbvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="slider"><label for="osc1">Ambience 2</label><input id="crikvol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="slider"><label for="osc1">Ambience 3</label><input id="firevol" type="range" class="slide" data-slider="true" data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2"></li>
-				<li class="savebtn"><button id="getURL" class="btn btn-default">Get URL</button></li>
+				<!-- Where the slider controls go -->
 			</ul>
 		</div>
 
@@ -78,7 +69,7 @@
 	<!-- Template for the ambient sound controls -->
 	<script id="ambience-template" type="text/x-handlebars-template">
 		<li class="slider">
-			<label for="{{id}}">{{src}}</label>
+			<label for="{{id}}">{{title}} Ambience</label>
 			<input id="{{id}}" type="range" class="slide" data-slider="true"
 				data-slider-theme="volume" data-slider-range="0,0.99"
 				step="0.01" value="0.99" />
@@ -88,13 +79,13 @@
 	<!-- Template for the oscillator controls -->
 	<script id="osc-template" type="text/x-handlebars-template">
 		<li class="slider">
-			<label for="{{id}}vol">{{title}} Frequency</label>
+			<label for="{{id}}freq">{{title}} Frequency</label>
 			<input type="text" class="slide" data-slider="true" data-slider-theme="volume"
-				id="{{id}}vol" data-slider-range="0,999" data-slider-step="0.01" value="0" />
+				id="{{id}}freq" data-slider-range="0,999" data-slider-step="0.01" value="0" />
 		</li>
 		<li class="slider">
-			<label for="{{id}}freq">{{title}} Volume</label>
-			<input id="{{id}}freq" type="range" class="slide" data-slider="true"
+			<label for="{{id}}vol">{{title}} Volume</label>
+			<input id="{{id}}vol" type="range" class="slide" data-slider="true"
 				data-slider-theme="volume" data-slider-range="0,0.99" step="0.01" value="0.2" />
 		</li>
 	</script>

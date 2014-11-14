@@ -14,65 +14,91 @@ $(document).ready(function () {
 	// Set up audio context
 	var context1 = document.context;
 
-	// Set up osc1
-	var osc1 = context1.createOscillator();
-	var panner1 = context1.createPanner();
-	var osc1vol = context1.createGain();
-	panner1.connect(osc1vol);
-	osc1vol.connect(context1.destination);
-	panner1.setPosition(3, 0, 0);
-	osc1.disconnect();
-	osc1.noteOn(0);
+	// // Set up osc1
+	// var osc1 = context1.createOscillator();
+	// var panner1 = context1.createPanner();
+	// var osc1vol = context1.createGain();
+	// panner1.connect(osc1vol);
+	// osc1vol.connect(context1.destination);
+	// panner1.setPosition(3, 0, 0);
+	// osc1.disconnect();
+	// osc1.noteOn(0);
 
-	// Set up osc 2
-	var osc2 = context1.createOscillator();
-	var panner2 = context1.createPanner();
-	var osc2vol = context1.createGain();
-	panner2.connect(osc2vol);
-	osc2vol.connect(context1.destination);
-	panner2.setPosition(-3, 0, 0);
-	osc2.disconnect();
-	osc2.noteOn(0);
+	// // Set up osc 2
+	// var osc2 = context1.createOscillator();
+	// var panner2 = context1.createPanner();
+	// var osc2vol = context1.createGain();
+	// panner2.connect(osc2vol);
+	// osc2vol.connect(context1.destination);
+	// panner2.setPosition(-3, 0, 0);
+	// osc2.disconnect();
+	// osc2.noteOn(0);
 
-	var osc3 = new Oscillator({
+	var osc1 = new Oscillator({
 		position: -3,
-		title: 'Left Ear'
+		title: 'Left Ear',
+		id: 'leftear'
 	});
 
-	// Load the ambience
-	var rb = new Audio();
-	rb.src = 'sounds/rainbirds.wav';
-	var rbsrc = context1.createMediaElementSource(rb);
-	var rbvol = context1.createGain();
-	rbvol.gain.value = $('#rbvol').val();
-	rbsrc.connect(rbvol);
-	rbvol.connect(context1.destination);
-	rb.loop = true;
-	rb.play();
+	var osc2 = new Oscillator({
+		position: 3,
+		title: 'Right Ear',
+		id: 'rightear'
+	});
 
-	var crik = new Audio();
-	crik.src = 'sounds/crickets.wav';
-	var criksrc = context1.createMediaElementSource(crik);
-	var crikvol = context1.createGain();
-	crikvol.gain.value = $('#crikvol').val();
-	criksrc.connect(crikvol);
-	crikvol.connect(context1.destination);
-	crik.loop = true;
-	crik.play();
+	// // Load the ambience
+	// var rb = new Audio();
+	// rb.src = 'sounds/rainbirds.wav';
+	// var rbsrc = context1.createMediaElementSource(rb);
+	// var rbvol = context1.createGain();
+	// rbvol.gain.value = $('#rbvol').val();
+	// rbsrc.connect(rbvol);
+	// rbvol.connect(context1.destination);
+	// rb.loop = true;
+	// rb.play();
 
-	var fire = new Audio();
-	fire.src = 'sounds/fire.wav';
-	var firesrc = context1.createMediaElementSource(fire);
-	var firevol = context1.createGain();
-	firevol.gain.value = $('#firevol').val();
-	firesrc.connect(firevol);
-	firevol.connect(context1.destination);
-	fire.loop = true;
-	fire.play();
+	// var crik = new Audio();
+	// crik.src = 'sounds/crickets.wav';
+	// var criksrc = context1.createMediaElementSource(crik);
+	// var crikvol = context1.createGain();
+	// crikvol.gain.value = $('#crikvol').val();
+	// criksrc.connect(crikvol);
+	// crikvol.connect(context1.destination);
+	// crik.loop = true;
+	// crik.play();
+
+	// var fire = new Audio();
+	// fire.src = 'sounds/fire.wav';
+	// var firesrc = context1.createMediaElementSource(fire);
+	// var firevol = context1.createGain();
+	// firevol.gain.value = $('#firevol').val();
+	// firesrc.connect(firevol);
+	// firevol.connect(context1.destination);
+	// fire.loop = true;
+	// fire.play();
 
 	var water = new Ambience({
 		src: 'sounds/water.wav',
-		id: 'water'
+		id: 'water',
+		title: 'Water'
+	});
+
+	var rain = new Ambience({
+		src: 'sounds/rainbirds.wav',
+		id: 'rain',
+		title: 'Rain'
+	});
+
+	var crickets = new Ambience({
+		src: 'sounds/crickets.wav',
+		id: 'crickets',
+		title: 'Crickets'
+	});
+
+	var fire = new Ambience({
+		src: 'sounds/fire.wav',
+		id: 'fire',
+		title: 'Fire'
 	});
 
 	// Functions to update the oscillators
