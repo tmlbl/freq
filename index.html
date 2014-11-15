@@ -11,17 +11,29 @@
 
 	<div><img src="app/peace.min.jpg" alt="" id="bg"></div>
 
-		<div id="window">
-			<ul id="sliderlist">
-				<!-- Where the slider controls go -->
-			</ul>
+	<div class="container">
+
+		<div class="row">
+
+			<div id="window" class="window col-md-6">
+				<ul id="sliderlist">
+					<!-- Where the slider controls go -->
+				</ul>
+			</div>
+
+			<div id="hz-window" class="window col-md-6">
+				<!-- Hz meters -->
+			</div>
+
 		</div>
 
-		<div id="freqDescHolder">
-			<textarea readonly unselectable="on" id="freqDesc"></textarea>
-		</div>
+		<div class="row">
 
-		<div id="lilwindow"></div>
+			<div id="freqDescHolder" class="col-md-12">
+				<textarea readonly unselectable="on" id="freqDesc"></textarea>
+			</div>
+
+		</div>
 
 	<!-- Template for Hz controls -->
 
@@ -82,6 +94,7 @@
 	<script src="app/context.js"></script>
 	<script src="app/ambience.js"></script>
 	<script src="app/oscillator.js"></script>
+	<script src="app/hz.js"></script>
 	<script src="app/ba.js"></script>
 	<script src="bower_components/jquery-simple-slider/js/simple-slider.min.js"></script>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">

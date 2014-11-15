@@ -41,4 +41,10 @@ $(document).ready(function () {
 		title: 'Fire'
 	});
 
+	// Set up the Hz meter
+	var hz = new HzMeter({
+		left: osc1,
+		right: osc2
+	});
+
 });

@@ -111,16 +111,7 @@ label {
 	color: white;
 }
 
-#window {
-	position: fixed;
-	left: 30px;
-	top: 30px;
-	bottom: 30px;
-	background-color: gray;
-	border-radius: 20px;
-	padding: 3%;
-	width: 500px;
-	margin-right: 100px;
+.window {
 	text-align: center;
 	background: #a7c7dc; /* Old browsers */
 	background: -moz-linear-gradient(top,  #a7c7dc 0%, #85b2d3 100%); /* FF3.6+ */
