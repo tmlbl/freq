@@ -6,14 +6,14 @@ $(document).ready(function () {
 	// Set up oscillators
 	var osc1 = new Oscillator({
 		position: -3,
-		title: 'Left Ear',
-		id: 'leftear'
+		id: 'leftear',
+		title: 'Left Ear'
 	});
 
 	var osc2 = new Oscillator({
 		position: 3,
-		title: 'Right Ear',
-		id: 'rightear'
+		id: 'rightear',
+		title: 'Right Ear'
 	});
 
 	// Set up ambient sounds

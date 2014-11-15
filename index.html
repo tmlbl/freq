@@ -21,33 +21,38 @@
 			<textarea readonly unselectable="on" id="freqDesc"></textarea>
 		</div>
 
-		<div id="lilwindow">
-			<ul id="bactrls">
-				<li class="bactrl">
-					<label for="leftearhz">Left Ear:</label>
-					<div class="input-group">
-						<input id="leftearhz" type="text" class="form-control">
-						<span class="input-group-addon">Hz</span>
-					</div>
-				</li>
-				<li class="bactrl">
-					<label for="rightearhz">Right Ear:</label>
-					<div class="input-group">
-						<input id="rightearhz" type="text" class="form-control">
-						<span class="input-group-addon">Hz</span>
-					</div>
-				</li>
-				<li class="bactrl">
-					<label for="bahz">Binaural:</label>
-					<div class="input-group">
-						<input id="bahz" type="text" class="form-control">
-						<span class="input-group-addon">Hz</span>
-					</div>
-				</li>
-			</ul>
-		</div>
+		<div id="lilwindow"></div>
+
+	<!-- Template for Hz controls -->
+
+	<script id="hz-template" type="text/x-handlebars-template">
+		<ul id="bactrls" class="bactrl">
+			<li>
+				<label for="leftearhz">Left Ear:</label>
+				<div class="input-group">
+					<input id="leftearhz" type="text" class="form-control">
+					<span class="input-group-addon">Hz</span>
+				</div>
+			</li>
+			<li>
+				<label for="rightearhz">Right Ear:</label>
+				<div class="input-group">
+					<input id="rightearhz" type="text" class="form-control">
+					<span class="input-group-addon">Hz</span>
+				</div>
+			</li>
+			<li>
+				<label for="bahz">Binaural:</label>
+				<div class="input-group">
+					<input id="bahz" type="text" class="form-control">
+					<span class="input-group-addon">Hz</span>
+				</div>
+			</li>
+		</ul>
+	</script>
 
 	<!-- Template for the ambient sound controls -->
+
 	<script id="ambience-template" type="text/x-handlebars-template">
 		<li class="slider">
 			<label for="{{id}}">{{title}} Ambience</label>
@@ -58,6 +63,7 @@
 	</script>
 
 	<!-- Template for the oscillator controls -->
+
 	<script id="osc-template" type="text/x-handlebars-template">
 		<li class="slider">
 			<label for="{{id}}freq">{{title}} Frequency</label>
