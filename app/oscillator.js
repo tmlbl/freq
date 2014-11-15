@@ -40,20 +40,26 @@ Oscillator.prototype.listen = function() {
   // Listen to the volume slider
   this.volSlider = $('#' + this.opts.id + 'vol');
   this.volSlider.change(function () {
-    self.vol.gain.value = self.volSlider.val();
+    self.setVolume(self.volSlider.val());
   });
   // Listen to the frequency slider
   this.freqSlider = $('#' + this.opts.id + 'freq');
   this.freqSlider.change(function () {
-    self.osc.frequency.value = self.freqSlider.val();
+    self.setFrequency(self.freqSlider.val());
   });
 };
 
-/**
- * Sets the oscillator frequency
- * @param {Number} val Frequency in Hz
- */
-Oscillator.prototype.set = function(val) {
+Oscillator.prototype.setFrequency = function(val) {
   this.osc.frequency.value = val;
   this.freqSlider.val(val);
+  if (this.freqChangeCallback) this.freqChangeCallback();
+};
+
+Oscillator.prototype.onFreqChange = function(func) {
+  this.freqChangeCallback = func;
+};
+
+Oscillator.prototype.setVolume = function(val) {
+  this.vol.gain.value = val;
+  this.volSlider.val(val);
 };
